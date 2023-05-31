@@ -13,18 +13,18 @@ using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 [RequireComponent(typeof(ARRaycastManager), typeof(ARPlaneManager))]
 
 //---- i added a RequireComponent MESH
-[RequireComponent(typeof(MeshCollider))]
+// [RequireComponent(typeof(MeshCollider))]
 
 public class DrawLineRenderer : MonoBehaviour
 
 {
 
     public Button button;
-    public Button finish;
+    //public Button finish;
     public Material[] materials;
     public GameObject parent;
-    public GameObject inputStory;
-    public GameObject okButton;
+    //public GameObject inputStory;
+    //public GameObject okButton;
 
     [SerializeField] //so we can easily drag it from the inspector --  it's just valable pour le suivant :)
 
@@ -38,7 +38,7 @@ public class DrawLineRenderer : MonoBehaviour
     LineRenderer lr; //variable lr type Line Renderer
 
     //déclaration mesh collider
-    private MeshCollider lineCollider;
+    //private MeshCollider lineCollider;
 
     private void Awake()
     {
@@ -71,10 +71,10 @@ public class DrawLineRenderer : MonoBehaviour
         button.onClick.AddListener(ChangeMaterials);
 
         // if we click on "finish" it will create a mesh collider for the lineRenderer and show an input field
-        finish.onClick.AddListener(WriteStory);
+        //finish.onClick.AddListener(WriteStory);
 
-        inputStory.SetActive(false);
-        okButton.SetActive(false);
+        //inputStory.SetActive(false);
+        //okButton.SetActive(false);
         
     }
 
@@ -155,7 +155,7 @@ public class DrawLineRenderer : MonoBehaviour
                 {
               
                     GameObject obj = Instantiate(prefab, pose.position, pose.rotation);
-                    obj.transform.parent = GameObject.Find("Drawing").transform;
+                    //obj.transform.parent = GameObject.Find("Drawing").transform;
                     lr = obj.GetComponent<LineRenderer>();
                     lr.positionCount = 0;
                     lr.material = materials[iCurrentMaterial];
@@ -173,18 +173,18 @@ public class DrawLineRenderer : MonoBehaviour
 
     //------ create a mesh
 
-    void FingerUp(EnhancedTouch.Finger finger)
-    {
-        MeshCollider collider = GetComponent<MeshCollider>();
-        Mesh mesh = new Mesh();
-        lr.BakeMesh(mesh, true);
-        collider.sharedMesh = mesh;  
-    }
+    //void FingerUp(EnhancedTouch.Finger finger)
+    //{
+       // MeshCollider collider = GetComponent<MeshCollider>();
+        //Mesh mesh = new Mesh();
+       // lr.BakeMesh(mesh, true);
+       // collider.sharedMesh = mesh;  
+    //}
 
-    void WriteStory()
-    {
-        inputStory.SetActive(true);
-        okButton.SetActive(true);
-        finish.gameObject.SetActive(false);
-    }
+    //void WriteStory()
+    //{
+        //inputStory.SetActive(true);
+        //okButton.SetActive(true);
+       // finish.gameObject.SetActive(false);
+    //}
 }
