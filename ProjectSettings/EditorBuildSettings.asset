@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DrawingScene.unity
     guid: 5a3b6678a01c04b81bd6c3e11b98b428
   - enabled: 0
@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Version1.unity
     guid: 19020a144df6647a1a810d1220250400
+  - enabled: 1
+    path: Assets/Scenes/v2-erasing.unity
+    guid: c7deb265a9e4d4722ab6e0a5c10c114c
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}

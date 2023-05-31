@@ -155,7 +155,7 @@ public class DrawLineRenderer : MonoBehaviour
                 {
               
                     GameObject obj = Instantiate(prefab, pose.position, pose.rotation);
-                    //obj.transform.parent = GameObject.Find("Drawing").transform;
+                    obj.transform.parent = GameObject.Find("Drawing").transform;
                     lr = obj.GetComponent<LineRenderer>();
                     lr.positionCount = 0;
                     lr.material = materials[iCurrentMaterial];
