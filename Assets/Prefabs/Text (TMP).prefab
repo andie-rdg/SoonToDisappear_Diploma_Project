@@ -101,9 +101,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample text
+  m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cc092cf6c2a074a2f834048249e527d0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 05a097bbdc4da40d387bc72e83376033, type: 2}
   m_sharedMaterial: {fileID: 6073090021528404749, guid: cc092cf6c2a074a2f834048249e527d0,
     type: 2}
   m_fontSharedMaterials: []
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -171,7 +171,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_renderer: {fileID: 8202129001114877785}
   m_maskType: 0
 --- !u!114 &1099019583386784116

@@ -36,6 +36,8 @@ public class DrawLineRenderer : MonoBehaviour
     private int iCurrentMaterial = 0;
 
     LineRenderer lr; //variable lr type Line Renderer
+    public Slider slider;
+    float lineWidth = 0.04f;
 
     //déclaration mesh collider
     //private MeshCollider lineCollider;
@@ -70,12 +72,15 @@ public class DrawLineRenderer : MonoBehaviour
     {
         button.onClick.AddListener(ChangeMaterials);
 
+        slider.onValueChanged.AddListener(UpdateLineWidth);
+
+
         // if we click on "finish" it will create a mesh collider for the lineRenderer and show an input field
         //finish.onClick.AddListener(WriteStory);
 
         //inputStory.SetActive(false);
         //okButton.SetActive(false);
-        
+
     }
 
     private void ChangeMaterials()
@@ -89,6 +94,11 @@ public class DrawLineRenderer : MonoBehaviour
         cb.pressedColor = col;
         cb.selectedColor = col;
         button.colors = cb;
+    }
+
+    private void UpdateLineWidth(float value)
+    {
+        lineWidth = Mathf.Lerp(0.01f, 0.08f, value);
     }
 
     private void FingerDown(EnhancedTouch.Finger finger)
@@ -159,6 +169,9 @@ public class DrawLineRenderer : MonoBehaviour
                     lr = obj.GetComponent<LineRenderer>();
                     lr.positionCount = 0;
                     lr.material = materials[iCurrentMaterial];
+                    lr.startWidth = lineWidth;
+                    lr.endWidth = lineWidth;
+                  
                 }
 
                 lr.positionCount++; // on rajoute un point
