@@ -7,6 +7,9 @@ using UnityEngine.XR.ARFoundation;
 public class PanelChanging : MonoBehaviour
 {
 
+    //..........Panel 0- SCAN the map..........
+    public Button SkipButton;
+    public GameObject ScanMapPanel;
 
     //..........Panel 1 -SCAN...........
     public Button NextButton;
@@ -30,7 +33,9 @@ public class PanelChanging : MonoBehaviour
 
     void Awake()
     {
-        ScanPanel.SetActive(true);
+
+        //..... for testing purposes i set the ScanPanel to false, but i need to set a begining panel to true after the tests
+        ScanPanel.SetActive(false);
         DiscoverPanel.SetActive(false);
         DrawingPanel.SetActive(false);
         StoryPanel.SetActive(false);
@@ -43,6 +48,7 @@ public class PanelChanging : MonoBehaviour
         NextButton.onClick.AddListener(ChangingScanToDiscover);
         DrawButton.onClick.AddListener(ChangingDiscoverToDrawing);
         FinishDrawingButton.onClick.AddListener(ChangingDrawingToStory);
+        SkipButton.onClick.AddListener(SkipScanTheMapPanel);
         //AddStoryButton.onClick.AddListener(UIChanging);
         
         
@@ -95,5 +101,13 @@ public class PanelChanging : MonoBehaviour
         StoryPanel.SetActive(true);
 
         Debug.Log("StoryPanel is active");
+    }
+
+    void SkipScanTheMapPanel()
+    {
+        ScanMapPanel.SetActive(false);
+        Debug.Log("ScanTheMapPanel is deactivated");
+        ScanPanel.SetActive(true);
+        Debug.Log("Scanning Panel is active");
     }
 }
