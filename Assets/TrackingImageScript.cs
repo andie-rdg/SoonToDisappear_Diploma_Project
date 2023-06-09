@@ -6,8 +6,15 @@ using UnityEngine.UI;
 public class TrackingImageScript : MonoBehaviour
 {
     public ARTrackedImageManager trackedImageManager;
-    public GameObject prefabImage1; // Reference to the prefab for image 1
-    public GameObject prefabImage2; // Reference to the prefab for image 2
+
+    // References to the prefabs for images
+    public GameObject HB; 
+    public GameObject Parker;
+    public GameObject SJC;
+    public GameObject SPX;
+    public GameObject kzern;
+
+
     public Button closeButton;
     private GameObject instantiatedPrefab = null;
 
@@ -24,8 +31,11 @@ public class TrackingImageScript : MonoBehaviour
     void Start()
     {
         closeButton.onClick.AddListener(RemovePrefab);
-        prefabImage1.SetActive(false);
-        prefabImage2.SetActive(false);
+        HB.SetActive(false);
+        Parker.SetActive(false);
+        SJC.SetActive(false);
+        SPX.SetActive(false);
+        kzern.SetActive(false);
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -33,20 +43,46 @@ public class TrackingImageScript : MonoBehaviour
         foreach (var trackedImage in eventArgs.added)
         {
             // Check if no prefab is currently instantiated
-            if (!prefabImage1.activeSelf && !prefabImage2.activeSelf)
+            if (!HB.activeSelf && !Parker.activeSelf && !SJC.activeSelf && !SPX.activeSelf && !kzern.activeSelf)
             {
-                // Check if the tracked image is Image 1
-                if (trackedImage.referenceImage.name == "Image1")
+                // Check if the tracked image is HB
+                if (trackedImage.referenceImage.name == "HB")
                 {
                     //instantiatedPrefab = Instantiate(prefabImage1, trackedImage.transform.position, trackedImage.transform.rotation);
-                    prefabImage1.SetActive(true);
+                    HB.SetActive(true);
+                    closeButton.gameObject.SetActive(true);
 
                 }
-                // Check if the tracked image is Image 2
-                else if (trackedImage.referenceImage.name == "Image2")
+                // Check if the tracked image is Parker
+                else if (trackedImage.referenceImage.name == "Parker")
                 {
-                    prefabImage2.SetActive(true);
-                    //instantiatedPrefab = Instantiate(prefabImage2, trackedImage.transform.position, trackedImage.transform.rotation);
+                    Parker.SetActive(true);
+                    closeButton.gameObject.SetActive(true);
+
+                }
+
+                //Check if the tracked image is SJC
+                else if (trackedImage.referenceImage.name == "SJC")
+                {
+                    SJC.SetActive(true);
+                    closeButton.gameObject.SetActive(true);
+
+                }
+
+                //Check if the tracked image is SPX
+                else if (trackedImage.referenceImage.name == "SPX")
+                {
+                    SPX.SetActive(true);
+                    closeButton.gameObject.SetActive(true);
+
+                }
+
+                //Check if the tracked image is kzern
+                else if (trackedImage.referenceImage.name == "kzern")
+                {
+                    kzern.SetActive(true);
+                    closeButton.gameObject.SetActive(true);
+
                 }
             }
         }
@@ -54,15 +90,35 @@ public class TrackingImageScript : MonoBehaviour
 
     void RemovePrefab()
     {
-        if (!prefabImage2.activeSelf)
+        if (HB.activeSelf)
         {
-            Destroy(prefabImage2);
-
-        } else if (!prefabImage1.activeSelf)
-            {
-                Destroy(prefabImage1);
-            }
+            HB.SetActive(false);
+            closeButton.gameObject.SetActive(false);
 
         }
+        else if (Parker.activeSelf)
+        {
+            Parker.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+        }
+
+        else if (SJC.activeSelf)
+        {
+            SJC.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+        }
+        else if (SPX.activeSelf)
+        {
+            SPX.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+        }
+        else if (kzern.activeSelf)
+        {
+            kzern.SetActive(false);
+            closeButton.gameObject.SetActive(false);
+
+        }
+
+    }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveScene : MonoBehaviour
 {
-    public Inventaire inventaire = new Inventaire();
+    public Memory inventaire = new Memory();
 
     private void Update()
     {
@@ -37,7 +37,7 @@ public class SaveScene : MonoBehaviour
         string filePath = Application.persistentDataPath + "/dataInventaire.json";
         string dataInventaire = System.IO.File.ReadAllText(filePath);
 
-        inventaire = JsonUtility.FromJson<Inventaire>(dataInventaire);
+        inventaire = JsonUtility.FromJson<Memory>(dataInventaire);
         Debug.Log("Chargement effectué");
     }
 }
@@ -46,10 +46,11 @@ public class SaveScene : MonoBehaviour
 
 [System.Serializable]
 
-public class Inventaire
+public class Memory
 {
     public List<Positions> positions = new List<Positions>();
     public string Material;
+    public string Text;
 }
 
 [System.Serializable]

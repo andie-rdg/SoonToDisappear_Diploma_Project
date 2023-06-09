@@ -10,6 +10,7 @@ public class PanelChanging : MonoBehaviour
     //..........Panel 0- SCAN the map..........
     public Button SkipButton;
     public GameObject ScanMapPanel;
+    public Button DiscoverMemories;
 
     //..........Panel 1 -SCAN...........
     public Button NextButton;
@@ -49,9 +50,10 @@ public class PanelChanging : MonoBehaviour
         DrawButton.onClick.AddListener(ChangingDiscoverToDrawing);
         FinishDrawingButton.onClick.AddListener(ChangingDrawingToStory);
         SkipButton.onClick.AddListener(SkipScanTheMapPanel);
+        DiscoverMemories.onClick.AddListener(SkipScanTheMapPanel);
         //AddStoryButton.onClick.AddListener(UIChanging);
-        
-        
+
+
     }
 
 
