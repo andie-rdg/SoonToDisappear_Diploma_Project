@@ -21,9 +21,8 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
 {
 
     public TMP_Text Text;
-
-    public Button button;
-    public Button back;
+    public Button ColorButton;
+    public Button EraseButton;
     //public Button finish;
     public Material[] materials;
     public GameObject parent;
@@ -77,10 +76,10 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
 
     private void Start()
     {
-        button.onClick.AddListener(ChangeMaterials);
-// slider.onValueChanged.AddListener(UpdateLineWidth);
+        ColorButton.onClick.AddListener(ChangeMaterials);
+        slider.onValueChanged.AddListener(UpdateLineWidth);
 
-        back.onClick.AddListener(Erase);
+        EraseButton.onClick.AddListener(Erase);
 
 
         // if we click on "finish" it will create a mesh collider for the lineRenderer and show an input field
@@ -110,12 +109,12 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
         iCurrentMaterial = (iCurrentMaterial + 1) % materials.Length;
         Color col = materials[iCurrentMaterial].color;
         Debug.Log(col);
-        ColorBlock cb = button.colors;
+        ColorBlock cb = ColorButton.colors;
         cb.normalColor = col;
         cb.highlightedColor = col;
         cb.pressedColor = col;
         cb.selectedColor = col;
-        button.colors = cb;
+        ColorButton.colors = cb;
     }
 
     private void UpdateLineWidth(float value)

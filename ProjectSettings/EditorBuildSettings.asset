@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DrawingScene.unity
     guid: 5a3b6678a01c04b81bd6c3e11b98b428
+  - enabled: 1
+    path: Assets/Scenes/[1]-LoadingPage.unity
+    guid: 617259fd715904a1889f494af29829f0
+  - enabled: 1
+    path: Assets/Scenes/[3]-ScanningDrawingText.unity
+    guid: 2f3db2d527e4643549637be82b6c92a0
   - enabled: 0
     path: Assets/Scenes/Scene1.unity
     guid: 78991052a906e44f986238cf7e4163ec
@@ -20,9 +26,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/v3-text.unity
     guid: 0488bc32b31d7417db120c3062c4f890
-  - enabled: 1
-    path: Assets/Scenes/Test image detection.unity
-    guid: 2f3db2d527e4643549637be82b6c92a0
   - enabled: 0
     path: Assets/Scenes/v4-save-load.unity
     guid: 0301f8ce67ba745c6910e460b4e4d850

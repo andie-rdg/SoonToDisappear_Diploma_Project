@@ -20,13 +20,24 @@ public class PanelChanging : MonoBehaviour
     public Button DrawButton;
     public GameObject DiscoverPanel;
 
+    //..........PanelX -Take a moment to reflect..........
+    public Button NextDrawButton;
+    public GameObject TakeAMomentPanel;
+
+
     //...........Panel 3 -DRAWING.......... 
     public Button FinishDrawingButton;
     public GameObject DrawingPanel;
 
-    //..........Panel 4 - STORY
+    //..........Panel 4 - STORY..........
     //public Button AddStoryButton;
     public GameObject StoryPanel;
+    public Button NextStoryButton;
+
+
+    //..........Panel 5 - DISPLAY STORY..........
+    public GameObject DisplayStoryPanel;
+    
 
     public ARPlaneManager planeManager;
 
@@ -40,6 +51,8 @@ public class PanelChanging : MonoBehaviour
         DiscoverPanel.SetActive(false);
         DrawingPanel.SetActive(false);
         StoryPanel.SetActive(false);
+        DisplayStoryPanel.SetActive(false);
+        TakeAMomentPanel.SetActive(false);
 
      }
     // Start is called before the first frame update
@@ -47,10 +60,12 @@ public class PanelChanging : MonoBehaviour
     {
         NextButton.onClick.AddListener(PlanePrefabOff);
         NextButton.onClick.AddListener(ChangingScanToDiscover);
-        DrawButton.onClick.AddListener(ChangingDiscoverToDrawing);
+        DrawButton.onClick.AddListener(ChangingDiscoverToTakeAMoment);
+        NextDrawButton.onClick.AddListener(ChangingTakeAMomentToDrawing);
         FinishDrawingButton.onClick.AddListener(ChangingDrawingToStory);
         SkipButton.onClick.AddListener(SkipScanTheMapPanel);
         DiscoverMemories.onClick.AddListener(SkipScanTheMapPanel);
+        NextStoryButton.onClick.AddListener(ChangingStoryToAddStory);
         //AddStoryButton.onClick.AddListener(UIChanging);
 
 
@@ -83,15 +98,21 @@ public class PanelChanging : MonoBehaviour
     }
 
 
-    void ChangingDiscoverToDrawing()
+    void ChangingDiscoverToTakeAMoment()
     {
         DiscoverPanel.SetActive(false);
 
         Debug.Log("Discover Panel is deactivated");
 
-        DrawingPanel.SetActive(true);
+        TakeAMomentPanel.SetActive(true);
 
-        Debug.Log("DrawingPanel is active");
+        Debug.Log("TakeAMomentPanel is active");
+    }
+
+    void ChangingTakeAMomentToDrawing()
+    {
+        TakeAMomentPanel.SetActive(false);
+        DrawingPanel.SetActive(true);
     }
 
     void ChangingDrawingToStory()
@@ -111,5 +132,11 @@ public class PanelChanging : MonoBehaviour
         Debug.Log("ScanTheMapPanel is deactivated");
         ScanPanel.SetActive(true);
         Debug.Log("Scanning Panel is active");
+    }
+
+    void ChangingStoryToAddStory()
+    {
+        StoryPanel.SetActive(false);
+        DiscoverPanel.SetActive(true);
     }
 }
