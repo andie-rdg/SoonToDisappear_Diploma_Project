@@ -13,6 +13,7 @@ public class TrackingImageScript : MonoBehaviour
     public GameObject SJC;
     public GameObject SPX;
     public GameObject kzern;
+    public GameObject Memory1;
 
 
     public Button closeButton;
@@ -36,6 +37,7 @@ public class TrackingImageScript : MonoBehaviour
         SJC.SetActive(false);
         SPX.SetActive(false);
         kzern.SetActive(false);
+        Memory1.SetActive(false);
     }
 
     private void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -81,6 +83,14 @@ public class TrackingImageScript : MonoBehaviour
                 else if (trackedImage.referenceImage.name == "kzern")
                 {
                     kzern.SetActive(true);
+                    closeButton.gameObject.SetActive(true);
+
+                }
+
+                else if (trackedImage.referenceImage.name == "Marker1")
+                {
+                    Memory1.SetActive(true);
+                    Memory1.transform.position = trackedImage.transform.position;
                     closeButton.gameObject.SetActive(true);
 
                 }
