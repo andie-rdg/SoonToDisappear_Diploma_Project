@@ -12,8 +12,8 @@ public class TextInputScript : MonoBehaviour
 
     private void Start()
     {
-        inputField.onEndEdit.AddListener(ProcessInput);
-        //NextButton.onClick.AddListener(DisplayText);
+        //inputField.onEndEdit.AddListener(ProcessInput);
+        NextButton.onClick.AddListener(() => ProcessInput(inputField.text));
     }
 
     private void ProcessInput(string inputText)

@@ -47,7 +47,7 @@ public class PanelChanging : MonoBehaviour
     void Awake()
     {
 
-        //..... for testing purposes i set the ScanPanel to false, but i need to set a begining panel to true after the tests
+       
         ScanPanel.SetActive(false);
         DiscoverPanel.SetActive(false);
         DrawingPanel.SetActive(false);
@@ -59,13 +59,23 @@ public class PanelChanging : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //..... for testing purposes i set the ScanPanel to false, but i need to set a begining panel to true after the tests
+        //NextButton = GetComponent<Button>();
+        NextButton.interactable = false;
+
+        GameObject SessionOrigin = GameObject.Find("AR Session Origin");
+        planeManager = SessionOrigin.GetComponent<ARPlaneManager>();
+        planeManager.planesChanged += OnPlanesChanged;
+
+
         NextButton.onClick.AddListener(PlanePrefabOff);
         NextButton.onClick.AddListener(ChangingScanToDiscover);
         DrawButton.onClick.AddListener(ChangingDiscoverToTakeAMoment);
         NextDrawButton.onClick.AddListener(ChangingTakeAMomentToDrawing);
         FinishDrawingButton.onClick.AddListener(ChangingDrawingToStory);
         SkipButton.onClick.AddListener(SkipScanTheMapPanel);
-        DiscoverMemories.onClick.AddListener(SkipScanTheMapPanel);
+        //DiscoverMemories.onClick.AddListener(SkipScanTheMapPanel);
         NextStoryButton.onClick.AddListener(ChangingStoryToAddStory);
         //AddStoryButton.onClick.AddListener(UIChanging);
 
@@ -82,7 +92,26 @@ public class PanelChanging : MonoBehaviour
 
         // Assign the custom plane prefab
         planeManager.planePrefab = null;
+
+
         
+    }
+
+
+    private void OnPlanesChanged(ARPlanesChangedEventArgs args)
+    {
+        // Enable the button if at least one plane is detected and meets the size requirement
+        foreach (var plane in args.added)
+        {
+            if (plane.extents.x >= 0.2f && plane.extents.y >= 0.2f)
+            {
+                NextButton.interactable = true;
+                return;
+            }
+        }
+
+        // Disable the button if no suitable plane is detected
+        //NextButton.interactable = false;
     }
 
 
@@ -129,7 +158,9 @@ public class PanelChanging : MonoBehaviour
 
     void SkipScanTheMapPanel()
     {
+        
         ScanMapPanel.SetActive(false);
+        
         Debug.Log("ScanTheMapPanel is deactivated");
         ScanPanel.SetActive(true);
         Debug.Log("Scanning Panel is active");
@@ -137,7 +168,10 @@ public class PanelChanging : MonoBehaviour
 
     void ChangingStoryToAddStory()
     {
+        
         StoryPanel.SetActive(false);
+        
+
         //DisplayStoryPanel.SetActive(true);
         DiscoverPanel.SetActive(true);
     }

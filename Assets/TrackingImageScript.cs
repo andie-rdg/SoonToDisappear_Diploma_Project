@@ -20,6 +20,7 @@ public class TrackingImageScript : MonoBehaviour
     public GameObject TextMemory1;
     public GameObject TextMemory2;
     public GameObject TextMemory3;
+  
 
 
     public Button closeButton;
@@ -173,6 +174,7 @@ public class TrackingImageScript : MonoBehaviour
         {
             kzern.SetActive(false);
             closeButton.gameObject.SetActive(false);
+
 
         }
 

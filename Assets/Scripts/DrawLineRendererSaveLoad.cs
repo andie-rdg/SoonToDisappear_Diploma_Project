@@ -20,7 +20,8 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
 
 {
 
-    public TMP_Text Text;
+    public Button Draw;
+    public Button FinishDrawing;
     public Button ColorButton;
     public Button EraseButton;
     //public Button finish;
@@ -59,8 +60,7 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
     {
         EnhancedTouch.TouchSimulation.Enable();
         EnhancedTouch.EnhancedTouchSupport.Enable();
-        EnhancedTouch.Touch.onFingerDown += FingerDown; //add function to the liste
-        EnhancedTouch.Touch.onFingerMove += FingerMove; //add function to the liste
+        //add function to the liste
 
 
     }
@@ -69,13 +69,15 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
     {
         EnhancedTouch.TouchSimulation.Disable();
         EnhancedTouch.EnhancedTouchSupport.Disable();
-        EnhancedTouch.Touch.onFingerDown -= FingerDown; // we don't want to listen to this event anymore (deletes func from the list)
-        EnhancedTouch.Touch.onFingerMove -= FingerMove; // we don't want to listen to this event anymore (deletes func from the list)
+        
 
     }
 
     private void Start()
     {
+
+        Draw.onClick.AddListener(EnableDrawing);
+        FinishDrawing.onClick.AddListener(DisableDrawing);
         ColorButton.onClick.AddListener(ChangeMaterials);
         slider.onValueChanged.AddListener(UpdateLineWidth);
 
@@ -90,18 +92,16 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
 
     }
 
-    void Update()
+    private void EnableDrawing (){
+        EnhancedTouch.Touch.onFingerDown += FingerDown; //add function to the liste
+        EnhancedTouch.Touch.onFingerMove += FingerMove;
+    }
+
+
+    private void DisableDrawing()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SaveToJson();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            //LoadFromJason();
-        }
-
+        EnhancedTouch.Touch.onFingerDown -= FingerDown; // we don't want to listen to this event anymore (deletes func from the list)
+        EnhancedTouch.Touch.onFingerMove -= FingerMove; // we don't want to listen to this event anymore (deletes func from the list)
     }
 
     private void ChangeMaterials()
@@ -209,42 +209,39 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
             }
         }
         //test with retrieving linerenderer's positions
-        RetrieveLineRendererPositions();
+       // RetrieveLineRendererPositions();
     }
 
-    void SaveToJson()
-    {
+    //void SaveToJson()
+    //{
         // Application.persistantDataPath is a repo created by unity & doesn't delete even when app is updated
         //string filePath = Application.persistentDataPath + "/dataInventaire.json";
         // Get all the positions of the Line Renderer
-        int positionCount = lr.positionCount;
+        //int positionCount = lr.positionCount;
 
       
-    }
+    //}
 
-    void LoadFromJson()
-    {
+    
 
-    }
-
-    void RetrieveLineRendererPositions()
-    {
-        foreach (LineRenderer lr in allLineRenderers)
-        {
-            int positionCount = lr.positionCount;
-            for (int i = 0; i < positionCount; i++)
-            {
-                Vector3 position = lr.GetPosition(i);
-                // Do something with the position
-                Text.text= "Line Renderer " + lr.name + ", Position " + i + ": " + position;
-            }
-        }
-    }
+    //void RetrieveLineRendererPositions()
+   // {
+       // foreach (LineRenderer lr in allLineRenderers)
+       // {
+          //  int positionCount = lr.positionCount;
+          //  for (int i = 0; i < positionCount; i++)
+           // {
+              //  Vector3 position = lr.GetPosition(i);
+               // // Do something with the position
+               // //Text.text= "Line Renderer " + lr.name + ", Position " + i + ": " + position;
+           // }
+       // }
+   // }
 
 
     void Erase()
     {
-        Debug.Log("erase function");
+        //Debug.Log("erase function");
 
         // access the last child of the list
 
@@ -267,15 +264,10 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
             Destroy(lastChild);
         }
 
-        Text.text = "count:" + allLineRenderers.Count;
+        //Text.text = "count:" + allLineRenderers.Count;
 
     }
 
 
-    //void WriteStory()
-    //{
-    //inputStory.SetActive(true);
-    //okButton.SetActive(true);
-    // finish.gameObject.SetActive(false);
-    //}
+   
 }
