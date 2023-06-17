@@ -37,6 +37,7 @@ public class PanelChanging : MonoBehaviour
 
     //..........Panel 5 - DISPLAY STORY..........
     public GameObject DisplayStoryPanel;
+    public Button AddStoryToTheWall;
     
 
     public ARPlaneManager planeManager;
@@ -137,6 +138,7 @@ public class PanelChanging : MonoBehaviour
     void ChangingStoryToAddStory()
     {
         StoryPanel.SetActive(false);
+        //DisplayStoryPanel.SetActive(true);
         DiscoverPanel.SetActive(true);
     }
 }

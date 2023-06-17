@@ -2,22 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class PlaceText : MonoBehaviour
 {
-    public Button share;
+    public Button shareButton;
     public GameObject TextMeshPrefab;
     public Transform Parent;
+    public GameObject inputField;
 
     // Start is called before the first frame update
     void Start()
     {
-        share.onClick.AddListener(ShareText);
+
+        
+        shareButton.onClick.AddListener(SendText);
+
     }
 
+    void SendText() {
+
+        InputField inputText = inputField.GetComponent<InputField>();
+        string inputFieldText = inputText.text;
+        ShareText(inputFieldText);
+}
+
     // Update is called once per frame
-    void ShareText()
+    void ShareText(string inputFieldText)
     {
         // Get the last child's Transform component
         Transform lastChildTransform = transform.GetChild(transform.childCount - 1);
@@ -32,6 +44,8 @@ public class PlaceText : MonoBehaviour
 
         //Instantiate the TextMeshPrefab
         GameObject obj = Instantiate(TextMeshPrefab, lrPosition, Quaternion.Euler(0, 0, 0));
+        TextMeshPro textMesh = obj.GetComponent<TextMeshPro>();
+        textMesh.text = inputFieldText;
         obj.transform.SetParent(Parent);
 
 

@@ -43,7 +43,7 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
 
     LineRenderer lr; //variable lr type Line Renderer
     public Slider slider;
-    float lineWidth = 0.04f;
+    float lineWidth = 0.01f;
 
     //déclaration mesh collider
     //private MeshCollider lineCollider;
@@ -119,7 +119,7 @@ public class DrawLineRendererSaveLoad : MonoBehaviour
 
     private void UpdateLineWidth(float value)
     {
-        lineWidth = Mathf.Lerp(0.01f, 0.08f, value);
+        lineWidth = Mathf.Lerp(0.01f, 0.2f, value);
     }
 
     private void FingerDown(EnhancedTouch.Finger finger)

@@ -4301,6 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c787b74ab6b749b38a72d657e4435a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Text: {fileID: 0}
   ColorButton: {fileID: 7595806399064049378}
   EraseButton: {fileID: 131807784}
   materials:
@@ -4334,6 +4335,7 @@ MonoBehaviour:
   kzern: {fileID: 0}
   Memory1: {fileID: 0}
   closeButton: {fileID: 0}
+  closeButtonPanel: {fileID: 0}
 --- !u!1 &1718843683
 GameObject:
   m_ObjectHideFlags: 0
