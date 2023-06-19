@@ -23,6 +23,7 @@ public class PanelChanging : MonoBehaviour
     //..........PanelX -Take a moment to reflect..........
     public Button NextDrawButton;
     public GameObject TakeAMomentPanel;
+    public Button backButton;
 
 
     //...........Panel 3 -DRAWING.......... 
@@ -38,7 +39,12 @@ public class PanelChanging : MonoBehaviour
     //..........Panel 5 - DISPLAY STORY..........
     public GameObject DisplayStoryPanel;
     public Button AddStoryToTheWall;
-    
+
+
+    //....HenriBordierPanel....
+    public GameObject HBpanel;
+
+
 
     public ARPlaneManager planeManager;
 
@@ -54,6 +60,7 @@ public class PanelChanging : MonoBehaviour
         StoryPanel.SetActive(false);
         DisplayStoryPanel.SetActive(false);
         TakeAMomentPanel.SetActive(false);
+        
 
      }
     // Start is called before the first frame update
@@ -68,14 +75,14 @@ public class PanelChanging : MonoBehaviour
         planeManager = SessionOrigin.GetComponent<ARPlaneManager>();
         planeManager.planesChanged += OnPlanesChanged;
 
-
+        backButton.onClick.AddListener(BackToDiscover);
         NextButton.onClick.AddListener(PlanePrefabOff);
         NextButton.onClick.AddListener(ChangingScanToDiscover);
         DrawButton.onClick.AddListener(ChangingDiscoverToTakeAMoment);
         NextDrawButton.onClick.AddListener(ChangingTakeAMomentToDrawing);
         FinishDrawingButton.onClick.AddListener(ChangingDrawingToStory);
         SkipButton.onClick.AddListener(SkipScanTheMapPanel);
-        //DiscoverMemories.onClick.AddListener(SkipScanTheMapPanel);
+        DiscoverMemories.onClick.AddListener(SkipScanTheMapPanel);
         NextStoryButton.onClick.AddListener(ChangingStoryToAddStory);
         //AddStoryButton.onClick.AddListener(UIChanging);
 
@@ -160,7 +167,7 @@ public class PanelChanging : MonoBehaviour
     {
         
         ScanMapPanel.SetActive(false);
-        
+        HBpanel.SetActive(false);
         Debug.Log("ScanTheMapPanel is deactivated");
         ScanPanel.SetActive(true);
         Debug.Log("Scanning Panel is active");
@@ -170,9 +177,16 @@ public class PanelChanging : MonoBehaviour
     {
         
         StoryPanel.SetActive(false);
-        
 
+        
         //DisplayStoryPanel.SetActive(true);
         DiscoverPanel.SetActive(true);
+    }
+
+    void BackToDiscover()
+    {
+        DrawingPanel.SetActive(false);
+        DiscoverPanel.SetActive(true);
+       
     }
 }

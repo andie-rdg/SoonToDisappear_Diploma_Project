@@ -67,7 +67,8 @@ public class TrackingImageScript : MonoBehaviour
                     //instantiatedPrefab = Instantiate(prefabImage1, trackedImage.transform.position, trackedImage.transform.rotation);
                     HB.SetActive(true);
                     closeButtonPanel.SetActive(true);
-                    
+                    closeButton.gameObject.SetActive(true);
+
 
                 }
                 // Check if the tracked image is Parker
@@ -80,7 +81,7 @@ public class TrackingImageScript : MonoBehaviour
                 }
 
                 //Check if the tracked image is SJC
-                /*else if (trackedImage.referenceImage.name == "SJC")
+                else if (trackedImage.referenceImage.name == "sjc")
                 {
                     SJC.SetActive(true);
                     closeButtonPanel.SetActive(true);
@@ -95,7 +96,7 @@ public class TrackingImageScript : MonoBehaviour
                     closeButton.gameObject.SetActive(true);
 
                 }
-                */
+                
 
                 //Check if the tracked image is kzern
                 else if (trackedImage.referenceImage.name == "kzern")
